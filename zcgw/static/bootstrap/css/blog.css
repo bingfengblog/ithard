@@ -1,0 +1,40 @@
+.header{
+    /*background-color:#2F4050;*/
+    height: 80px;
+    /*color:#ffffff;*/
+}
+.header #row2 a {
+    color:#ffffff;
+}
+#row2,#row1{
+    float: left;
+    margin-left: 40px;
+    margin-top: 5px;
+    overflow:hidden;
+}
+.body{
+     overflow: hidden;
+
+}
+
+.left-side{
+   margin-top: 0px;
+    width: 150px;
+    height: 100%;
+    background-color: #2F4050;
+    float:left;
+}
+.right-side{
+
+    background-color: #f2f2ee;
+    color: #911c29;
+    height: 100%;
+}
+
+.side{
+    margin-left: 40px;;
+    padding-top: 50px;
+}
+#sidein {
+    margin-top: 60px;
+}

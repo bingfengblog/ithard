@@ -1,0 +1,47 @@
+{% load staticfiles %}
+{% load i18n %}
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+
+        <title>IT资产管理</title>
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}">
+        <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'bootstrap/css/blog.css' %}">
+        {{ form.media }}
+    </head>
+
+<body>
+<div class="header">
+    <div id="row1"><img src="/static/images/logo.png"></div>
+    <div id="row2"><h2>IT资产管理</h2></div>
+</div>
+<div class="contain-content">
+    <div class="left-side">
+        <div class="side">
+            <ul class="nav nav-pills nav-stacked">
+				<li class="nav-header">List header</li>
+				<li><a href="#"> 厦门</a></li>
+				<li><a href="#"> 漳州</a></li>
+				<li><a href="#"> 泉州</a></li>
+                <li><a href="#"> 包头</a></li>
+                <li><a href="#"> 呼市</a></li>
+                <li><a href="#"> 眉山</a></li>
+			</ul>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <p>hello xiamen</p>
+    </div>
+</div>
+
+
+
+
+
+</body>
+
+
+</html>
