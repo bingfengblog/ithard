@@ -1,0 +1,73 @@
+{% extends "hardware/base.html" %}
+
+
+{% block right-side %}
+   <div class="col-11">
+      <div class="border-in">
+        <div class="item-type">
+                   <ul class="nav nav-tabs">
+                            
+                           <li {% ifequal type_id  0 %} class="active"{% endifequal %}><a href="/city_id={{ city_id}}">所有设备</a></li>
+                           <li {% ifequal type_id '1' %} class="active"{% endifequal %}><a href="type_id=1">i3主机</a></li>
+                           <li {% ifequal type_id '2' %} class="active"{% endifequal %}><a href="type_id=2">i5主机</a></li>
+                           <li {% ifequal type_id '3' %} class="active"{% endifequal %}><a href="type_id=3">笔记本电脑</a></li>
+                           <li {% ifequal type_id '4' %} class="active"{% endifequal %}><a href="type_id=4">其他设备</a></li>
+                           <li {% ifequal type_id '7' %} class="active"{% endifequal %}><a href="type_id=7">空闲主机</a></li>
+                    </ul>
+       </div>
+<div class="item">
+    <table class="table table-striped table-hover">
+{#   <caption>设备明细   共有<strong>{{ item.count }}</strong>台</caption>#}
+   <thead>
+      <tr>
+          <th>部门</th>
+         <th>设备编号</th>
+         <th>设备类型</th>
+         <th>姓名</th>
+         <th>价格</th>
+         <th>购买时间</th>
+         <th>是否在用</th>
+         <th>备注</th>
+      </tr>
+   </thead>
+   <tbody>
+   {% for item in item %}
+      <tr>
+          {% ifequal item.depart None %}
+            <td>--</td>
+          {% else %}
+            <td>{{ item.depart }}</td>
+          {% endifequal %}
+          <td>{{ item.item_name }}</td>
+          <td>{{ item.type.type_name }}</td>
+          {% ifequal item.user None %}
+             <td>--</td>
+           {% else %}
+            <td>{{ item.user }}</td>
+          {% endifequal %}
+          <td>{{ item.type.price }}</td>
+          <td>{{ item.buy_date|date:'Y-m-d' }}</td>
+          {% ifequal item.is_use True %}
+          <td class="glyphicon glyphicon-ok-sign"></td>
+          {% else %}
+          <td class="glyphicon glyphicon-remove-sign"></td>
+          {% endifequal %}
+          <td>{{ item.describe }}</td>
+      </tr>
+    {% endfor %}
+   </tbody>
+
+</table>
+
+</div>
+      </div>
+   {% if type_id == 0 %}
+   <p>共<strong>{{ item.count }}</strong>台设备 （电脑: {{ pc_num }}台  其他设备:{{ else_num }}台）</p>
+   {% else %}
+   <p>共<strong>{{ item.count }}</strong>台设备
+   {% endif %}
+</div>
+
+{% endblock %}
+
+

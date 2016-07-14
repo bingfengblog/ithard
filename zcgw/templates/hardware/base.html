@@ -10,38 +10,46 @@
         <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
         <link rel="stylesheet" href="{% static 'bootstrap/css/blog.css' %}">
         {{ form.media }}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
-<body>
+<body style="overflow:-Scroll;overflow-y:hidden">
 <div class="header">
-    <div id="row1"><img src="/static/images/logo.png"></div>
+    <div id="row1"><a href="/index"><img src="/static/images/logo.png"></a></div>
     <div id="row2"><h2>IT资产管理</h2></div>
-</div>
-<div class="contain-content">
-    <div class="left-side">
-        <div class="side">
-            <ul class="nav nav-pills nav-stacked">
-				<li class="nav-header">List header</li>
-				<li><a href="#"> 厦门</a></li>
-				<li><a href="#"> 漳州</a></li>
-				<li><a href="#"> 泉州</a></li>
-                <li><a href="#"> 包头</a></li>
-                <li><a href="#"> 呼市</a></li>
-                <li><a href="#"> 眉山</a></li>
-			</ul>
-        </div>
-    </div>
+    <div id="row3"><a href="/admin">后台管理</a></div>
 
-    <div class="right-side">
-        <p>hello xiamen</p>
-    </div>
 </div>
 
+<div class="row">
+
+    <div class="col-1">
+        {% block left-side %}
+        <ul class="nav nav-list">
+        <li class="nav-header">城市区域</li>
+        <li {% ifequal city_id 0 %} class="active" {% endifequal %}><a href="/city_id=0">总计</a></li>
+            {% for ct in citys %}
+                <li {% ifequal city_id ct.id %} class="active" {% endifequal %}><a href="/city_id={{ ct.id }}"> {{ ct.cityname }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
+    </div>
 
 
 
+                {% block right-side %}
+                {% endblock %}
 
+    </div>
+{#</div>#}
 </body>
+<script>
 
 
+
+{#$('ul li').click(function(){#}
+{#    $(this).addClass('active').siblings().removeClass('active');#}
+{#{)#}
+
+</script>
 </html>

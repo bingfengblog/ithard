@@ -1,0 +1,13 @@
+{% extends "hardware/base.html" %}
+{% block left-side %}
+<ul class="nav nav-list">
+				<li class="nav-header">城市区域</li>
+                {% for key,value in citys.items %}
+                    {% ifequal key city  %}
+                        <li class="active"><a href="/{{ key }}"> {{ value }}</a></li>
+                    {% else %}
+                        <li><a href="/{{ key }}"> {{ value }}</a></li>
+                    {% endifequal %}
+                {% endfor %}
+			</ul>
+{% endblock %}

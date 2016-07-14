@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'hardware',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -77,8 +79,12 @@ WSGI_APPLICATION = 'zcgw.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'zcgl',
+        'USER': 'root',
+        'PASSWORD': 'duanzf117',
+        'HOST': '192.168.9.224',
+        'PORT': '3306',
     }
 }
 
@@ -128,3 +134,12 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+REST_FRAMEWORK = {
+    # 'UNICODE_JSON': False,
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'rest_framework.filters.DjangoFilterBackend',
+    ],
+}
